@@ -12,7 +12,7 @@ const usuariosRouter = Router();
 
 usuariosRouter.get('/Listar', verifyToken, getUsuarios);
 
-usuariosRouter.post('/Registar/Free', setUsuario);
+usuariosRouter.post('/Registrar/Free', setUsuario);
 
 usuariosRouter.post('/Registrar',verifyToken, setUsuario);
 usuariosRouter.post('/Login', validarUsuario);
