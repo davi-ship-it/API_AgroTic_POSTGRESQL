@@ -9,10 +9,15 @@ import bodyParser from "body-parser";
 
 import usuariosRouter from './src/routes/RouteCliente.js';
 
+import authRouter from './src/routes/authRoutes.js';
+
+
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/UsuariosAll",usuariosRouter);
+
+app.use("/auth", authRouter)
 
 
 
