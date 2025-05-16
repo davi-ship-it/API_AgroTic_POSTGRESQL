@@ -11,6 +11,10 @@ import cosechas from './src/routes/RouteCosecha.js'
 import actividades from './src/routes/RouteActividades.js'
 import mediSensor from './src/routes/Routemedisensor.js'
 import finanzasRouter from './src/routes/RouteFinanzas.js';
+import Epa from './src/routes/RouteEpa.js'
+import inventario from './src/routes/RouteInventario.js'
+import sensor from './src/routes/RouteSensor.js'
+import tiposensor from './src/routes/RouteTipoSensor.js'
 
 import routerCategoria from './src/routes/RouteCategoria.js';
 
@@ -38,9 +42,11 @@ app.use('/zona', zonas)
 app.use('/cosecha', cosechas)
 app.use('/actividad', actividades)
 app.use('/medisensor', mediSensor)
-
-
+app.use ('/epa', Epa)
+app.use('/inventario', inventario)
+app.use('/sensor', sensor)
 app.use("Finanzas", finanzasRouter)
+app.use('/tiposensor', tiposensor)
 
 
 
