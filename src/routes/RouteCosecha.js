@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { actualizarCosecha, eliminarCosecha, listarCosechas, obtenerCosechaPorId, registrarCosecha} from '../controllers/cosechaController.js';
+import { actualizarCosecha, eliminarCosecha, listarCosechas, obtenerCosechaPorId, registrarCosecha} from '../controllers/Cultivos/cosechaController.js';
 
 const router = Router();
 

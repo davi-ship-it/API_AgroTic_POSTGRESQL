@@ -1,5 +1,5 @@
 // controllers/usuarios_controller.js
-import { pool } from '../database/conexion.js';
+import { pool } from '../../database/conexion.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 

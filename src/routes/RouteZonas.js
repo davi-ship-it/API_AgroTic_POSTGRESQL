@@ -5,7 +5,7 @@ obtenerZonas,
 obtenerZonaPorId,
 actualizarZona,
 eliminarZona
-} from '../controllers/zonasController.js';
+} from '../controllers/IOT/zonasController.js';
 
 const router = Router();
 
