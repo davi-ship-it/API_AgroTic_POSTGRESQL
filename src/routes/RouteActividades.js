@@ -1,7 +1,7 @@
 import { Router } from "express";
 import{
     cargarImagen, listarActividades, registrarActividad, obtenerActividadPorId, actualizarActividad, eliminarActividad
-}from '../controllers/actividadesController.js'
+}from '../controllers/Cultivos/actividadesController.js'
 
 const router = Router();
 router.post('/registrar', cargarImagen, registrarActividad);

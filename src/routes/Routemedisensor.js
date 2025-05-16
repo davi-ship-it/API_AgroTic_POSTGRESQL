@@ -3,7 +3,7 @@ import{
     registrarmedisensor,  obtenermedisensorPorId, actualizarmedisensor, eliminarmedisensor,
     listarmedisensor
 
-}from '../controllers/medisensorController.js'
+}from '../controllers/IOT/medisensorController.js'
 
 const router = Router();
 router.post('/registrar', registrarmedisensor);

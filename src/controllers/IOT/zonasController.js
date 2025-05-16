@@ -1,4 +1,4 @@
-import { pool } from '../database/conexion.js';
+import { pool } from '../../database/conexion.js';
 
 // Crear una zona
 export const crearZona = async (req, res) => {
