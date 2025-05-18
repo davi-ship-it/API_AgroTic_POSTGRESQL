@@ -45,7 +45,7 @@ app.use('/medisensor', mediSensor)
 app.use ('/epa', Epa)
 app.use('/inventario', inventario)
 app.use('/sensor', sensor)
-app.use("Finanzas", finanzasRouter)
+app.use("/Finanzas", finanzasRouter)
 app.use('/tiposensor', tiposensor)
 
 
