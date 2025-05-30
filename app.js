@@ -28,14 +28,12 @@ const app = express();
 
 app.use(express.static('public'));
 
-// Middleware para procesar JSON y URL-encoded
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Rutas
 app.use("/UsuariosAll", usuariosRouter);
 app.use("/auth", authRouter);
-app.use('/cultivo', cultivos);
 app.use('/cultivo', cultivos);
 
 app.use('/zona', zonas)

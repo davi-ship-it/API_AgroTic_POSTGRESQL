@@ -17,3 +17,24 @@ export const validateResetToken = (token) => {
     return null;
   }
 };
+export const createRoleChangeToken = (aprendizDni) => {
+  return jwt.sign(
+    { aprendizDni },
+    JWT_SECRET,
+    { expiresIn: JWT_EXPIRES_IN }
+  );
+};
+
+/**
+ * Valida el token y extrae aprendizDni.
+ * Devuelve null si falla o expira.
+ */
+export const validateRoleChangeToken = (token) => {
+  try {
+    const { aprendizDni } = jwt.verify(token, JWT_SECRET);
+    if (!aprendizDni) return null;
+    return aprendizDni;
+  } catch (err) {
+    return null;
+  }
+};
