@@ -1,9 +1,10 @@
 import { Router } from "express";
 
-import { setFiltroFinanzas } from "../controllers/Finanzas/BuscadorFs.js";
+import { getFinanzasCultivo} from "../controllers/Finanzas/BuscadorFs.js";
 
 const finanzasRouter = Router();
 
-finanzasRouter.post("/Filtrar", setFiltroFinanzas);
+finanzasRouter.get("/Filtrar/id", getFinanzasCultivo);
+
 
 export default  finanzasRouter

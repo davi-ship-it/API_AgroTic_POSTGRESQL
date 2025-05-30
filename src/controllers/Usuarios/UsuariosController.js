@@ -57,14 +57,46 @@ export const setUsuario = async (req, res) => {
       usu_dni
     } = req.body;
 
+    // Verificar unicidad de teléfono, correo y DNI
+    const checkSql = `
+      SELECT usu_telefono, usu_correo, usu_dni
+      FROM usuarios
+      WHERE usu_telefono = $1
+         OR usu_correo = $2
+         OR usu_dni = $3
+    `;
+    const checkResult = await pool.query(checkSql, [
+      usu_telefono,
+      usu_correo,
+      usu_dni
+    ]);
+
+    if (checkResult.rows.length > 0) {
+      const existing = checkResult.rows[0];
+      let message = 'Ya existe';
+      const conflicts = [];
+      if (existing.usu_telefono === usu_telefono) {
+        conflicts.push('teléfono');
+      }
+      if (existing.usu_correo === usu_correo) {
+        conflicts.push('correo');
+      }
+      if (existing.usu_dni === usu_dni) {
+        conflicts.push('DNI');
+      }
+      message += ' un */' + conflicts.join(' y ') + '*/ registrado.';
+      return res.status(400).json({ message });
+    }
+
+    // Si no hay conflictos, proceder con el hash y la inserción
     const hashed = await bcrypt.hash(usu_password, 10);
-    const sql = `
+    const insertSql = `
       INSERT INTO usuarios
         (usu_nombres, usu_apellidos, usu_password_h, usu_telefono, usu_correo, usu_rol, usu_dni)
       VALUES ($1, $2, $3, $4, $5, $6, $7)
       RETURNING pk_id_usuario
     `;
-    const result = await pool.query(sql, [
+    const insertResult = await pool.query(insertSql, [
       usu_nombres,
       usu_apellidos,
       hashed,
@@ -74,7 +106,7 @@ export const setUsuario = async (req, res) => {
       usu_dni
     ]);
 
-    const newId = result.rows[0]?.pk_id_usuario;
+    const newId = insertResult.rows[0]?.pk_id_usuario;
     return res.status(201).json({ message: 'Usuario creado con éxito', id: newId });
   } catch (error) {
     console.error('Error al crear usuario:', error);

@@ -56,9 +56,11 @@ export const RegistrarSensor = async (req,res) => {
             mensaje: 'Sensor registrado exitosamente.',
             sensor: result.rows[0]
         });
+
+        console.log(result.rows)
     }catch (error) {
         console.error('Error al registrar el sensor:', error);
-        res.status(500).json({ error: 'Error interno del servidor.' });
+        res.status(500).json({ error: 'Error interno del servidoooor.' });
     }
 
 
