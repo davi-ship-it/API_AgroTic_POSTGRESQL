@@ -5,14 +5,14 @@ import {
   putUsuarios,
   deleteUsuarios,
   validarUsuario
-} from '../controllers/UsuariosController.js';
+} from '../controllers/Usuarios/UsuariosController.js';
 import { verifyToken } from '../middlewares/VerifyToken.js';
-
+//hola
 const usuariosRouter = Router();
 
 usuariosRouter.get('/Listar', verifyToken, getUsuarios);
 
-usuariosRouter.post('/Registar/Free', setUsuario);
+usuariosRouter.post('/Registrar/Free', setUsuario);
 
 usuariosRouter.post('/Registrar',verifyToken, setUsuario);
 usuariosRouter.post('/Login', validarUsuario);
